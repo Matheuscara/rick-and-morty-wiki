@@ -10,10 +10,7 @@ import { localizationComponent } from '../../components/localizations/localizati
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [
-    CommonModule,
-    CharacterComponent,
-    localizationComponent,  ],
+  imports: [CommonModule, CharacterComponent, localizationComponent],
 })
 export class HomeComponent {
   readonly unityCharacters = signal(8);

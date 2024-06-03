@@ -20,7 +20,7 @@ export class localizationComponent implements OnChanges {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnChanges(): void {
-    if (this.unity() != 0) {
+    if (this.unity() != 0 && this.localization().length > 0) {
       this.localizationSlice = this.localization().slice(0, this.unity());
     } else {
       this.localizationSlice = this.localization();

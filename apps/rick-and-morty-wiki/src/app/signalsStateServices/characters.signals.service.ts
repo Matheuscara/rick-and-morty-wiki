@@ -47,7 +47,6 @@ export class CharactersSubjectService implements StateCharacters {
 
   init = effect(() => {
     !this.initialized() && this.loadInitAllCharacters();
-    console.log('subject chacactersAll: ', this.charactersAll());
   });
 
   public async loadInitAllCharacters(): Promise<void> {

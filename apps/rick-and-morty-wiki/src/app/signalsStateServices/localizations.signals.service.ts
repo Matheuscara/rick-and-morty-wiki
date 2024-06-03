@@ -44,7 +44,6 @@ export class LocalizationsSubjectService implements StateLocalization {
 
   init = effect(() => {
     !this.initialized() && this.loadInitAllLocalizations();
-    console.log('subject localizationsAll: ', this.localizationsAll());
   });
 
   public async loadInitAllLocalizations(): Promise<void> {

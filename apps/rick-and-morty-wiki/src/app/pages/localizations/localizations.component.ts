@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalizationsSubjectService } from '../../signalsStateServices/localizations.signals.service';
 import { ILocation } from '../../services/dtos/models/localizations';
@@ -10,7 +10,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @Component({
   selector: 'app-localizations',
   standalone: true,
-  imports: [CommonModule, FormsModule, localizationComponent, InfiniteScrollModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    localizationComponent,
+    InfiniteScrollModule,
+  ],
   templateUrl: './localizations.component.html',
   styleUrl: './localizations.component.scss',
 })
@@ -19,11 +24,14 @@ export class LocalizationsPageComponent implements OnInit {
   quantityLocalizations: number = 20;
   routeId: string = '';
   localization = () => this.localizationState.localizationSelected();
-
   filterInput = '';
   filterLocalization!: ILocation[];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    @Inject('Window') private window: Window
+  ) {}
 
   ngOnInit(): void {
     this.getRouteId();
@@ -36,7 +44,7 @@ export class LocalizationsPageComponent implements OnInit {
   }
 
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   onScrollByLastLocalization() {
