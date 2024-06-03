@@ -1,0 +1,73 @@
+<div class="bg-gray">
+  <div
+    id="nav-bar"
+    class="max-w-screen-xl mx-auto flex flex-wrap md:flex-row md:flex-nowrap justify-center md:justify-start pt-5 px-4"
+  >
+    @if (this.character().id != 0) {
+    <div class="w-full flex md:w-2/3">
+      <img
+        class="h-full w-auto rounded-simple m-auto"
+        src="{{ this.character().image }}"
+        alt="{{ this.character().name }}"
+      />
+    </div>
+    <div
+      class="w-full flex flex-col gap-4 items-center justify-end pt-5 md:items-baseline md:w-0.5/3 md:px-5 md:py-0"
+    >
+      <h1 class="text-5xl font-semibold">{{ this.character().name }}</h1>
+      <h3>
+        Participated in
+        <span class="text-blue-ocean"
+          >{{ this.countEps(this.character().episode) }} episodes</span
+        >
+      </h3>
+      <div class="py-10 flex gap-10">
+        <div>
+          <p class="text-zinc-500">Status:</p>
+          <h1>{{ this.character().status }}</h1>
+        </div>
+        <div>
+          <p class="text-zinc-500">Specie:</p>
+          <h1>{{ this.character().species }}</h1>
+        </div>
+        <div>
+          <p class="text-zinc-500">Gender:</p>
+          <h1>{{ this.character().gender }}</h1>
+        </div>
+      </div>
+      <div class="flex gap-4 justify-start md:justify-end">
+        <app-frame
+          [title]="this.character().location.name"
+          [href]="this.character().location.url"
+        >
+          <p id="frame" class="text-zinc-500">Location:</p>
+        </app-frame>
+      </div>
+    </div>
+    }
+  </div>
+  <div class="border-t border-gray-light mt-5"></div>
+  <div class="flex justify-center pt-7 px-5">
+    <input
+      [(ngModel)]="filterInput"
+      id="filter"
+      (keyup)="changeInput()"
+      class="bg-gray-light rounded-simple w-full px-5 py-3 outline-none border-none text-white sm:w-72"
+      placeholder="Search your character"
+      type="text"
+    />
+  </div>
+  <app-character
+    (eventName)="getById($event)"
+    [caracters]="this.filterInput === '' ? this.charactersState.charactersAll() : this.filterCharacters"
+    [unity]="quantityCharacters"
+    [seeAll]="false"
+  ></app-character>
+  <div
+    class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="200"
+    (scrolled)="onScrollByLastCharacter()"
+  ></div>
+</div>

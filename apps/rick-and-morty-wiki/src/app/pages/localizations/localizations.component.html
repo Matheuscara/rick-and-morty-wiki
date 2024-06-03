@@ -1,0 +1,64 @@
+<div class="bg-gray">
+    <div
+      id="nav-bar"
+      class="max-w-screen-xl mx-auto flex flex-wrap md:flex-row md:flex-nowrap justify-center md:justify-start pt-5 px-4"
+    >
+      @if (this.localization().id != 0) {
+      <div class="w-full flex md:w-2/3">
+        <img
+          class="h-full w-auto rounded-simple m-auto max-w-80"
+          src="https://i.imgur.com/GmtIDIW.png"
+          alt="{{ this.localization().name }}"
+        />
+      </div>
+      <div
+        class="w-full flex flex-col gap-4 items-center justify-end pt-5 md:items-baseline md:w-0.5/3 md:px-5 md:py-0"
+      >
+        <h1 class="text-5xl font-semibold">{{ this.localization().name }}</h1>
+        <h3>
+          With in
+          <span class="text-blue-ocean"
+            >{{ this.counResidents(this.localization().residents) }} residents</span
+          >
+        </h3>
+        <div class="py-10 flex gap-10">
+          <div>
+            <p class="text-zinc-500">Type:</p>
+            <h1>{{ this.localization().type }}</h1>
+          </div>
+          <div>
+            <p class="text-zinc-500">Dimension:</p>
+            <h1>{{ this.localization().dimension }}</h1>
+          </div>
+        </div>
+        <div class="flex gap-4 justify-start md:justify-end">
+        </div>
+      </div>
+      }
+    </div>
+    <div class="border-t border-gray-light mt-5"></div>
+    <div class="flex justify-center pt-7 px-5">
+      <input
+        [(ngModel)]="filterInput"
+        id="filter"
+        (keyup)="changeInput()"
+        class="bg-gray-light rounded-simple w-full px-5 py-3 outline-none border-none text-white sm:w-72"
+        placeholder="Search your localization"
+        type="text"
+      />
+    </div>
+    <app-localization
+      (eventName)="getById($event)"
+      [localization]="this.filterInput === '' ? this.localizationState.localizationsAll() : this.filterLocalization"
+      [unity]="quantityLocalizations"
+      [seeAll]="false"
+    ></app-localization>
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="200"
+      (scrolled)="onScrollByLastLocalization()"
+    ></div>
+  </div>
+  
