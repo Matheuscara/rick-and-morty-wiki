@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalizationsSubjectService } from '../../signalsStateServices/localizations.signals.service';
 import { ILocation } from '../../services/dtos/models/localizations';
@@ -21,17 +21,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 })
 export class LocalizationsPageComponent implements OnInit {
   readonly localizationState = inject(LocalizationsSubjectService);
-  quantityLocalizations: number = 20;
-  routeId: string = '';
+  quantityLocalizations = 20;
+  routeId = '';
   localization = () => this.localizationState.localizationSelected();
   filterInput = '';
   filterLocalization!: ILocation[];
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    @Inject('Window') private window: Window
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.getRouteId();
@@ -44,7 +40,7 @@ export class LocalizationsPageComponent implements OnInit {
   }
 
   scrollToTop() {
-    this.window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   onScrollByLastLocalization() {
@@ -77,7 +73,7 @@ export class LocalizationsPageComponent implements OnInit {
     });
   }
 
-  counResidents(arrayEps: Array<any>): number {
+  counResidents(arrayEps: Array<string>): number {
     return arrayEps.length;
   }
 }

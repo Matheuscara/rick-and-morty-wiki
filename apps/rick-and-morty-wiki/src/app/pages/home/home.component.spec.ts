@@ -28,7 +28,7 @@ describe('HomeComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of({
-              get: (name: string) => '1', // Mocking route paramMap
+              get: () => '1', // Mocking route paramMap
             }),
           },
         },

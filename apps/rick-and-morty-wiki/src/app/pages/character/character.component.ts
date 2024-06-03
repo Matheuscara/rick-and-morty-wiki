@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CharactersSubjectService } from '../../signalsStateServices/characters.signals.service';
@@ -23,8 +23,8 @@ import { ICharacter } from '../../services/dtos/models/characters';
 })
 export class CharacterPageComponent implements OnInit {
   readonly charactersState = inject(CharactersSubjectService);
-  quantityCharacters: number = 20;
-  routeId: string = '';
+  quantityCharacters = 20;
+  routeId = '';
   character = () => this.charactersState.charactersSelected();
 
   filterInput = '';
@@ -76,7 +76,7 @@ export class CharacterPageComponent implements OnInit {
     });
   }
 
-  countEps(arrayEps: Array<any>): number {
+  countEps(arrayEps: Array<string>): number {
     return arrayEps.length;
   }
 }

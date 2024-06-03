@@ -76,7 +76,7 @@ export class LocalizationsSubjectService implements StateLocalization {
         (response) => {
           this.localizationSelected$.update(() => response);
         },
-        (error) => {
+        () => {
           this.router.navigate(['/404']);
         }
       );

@@ -8,13 +8,11 @@ import { InfoMock } from '../../services/dtos/models/info';
 import { CharacterMockExample } from '../../services/dtos/models/characters';
 import { LocalizationService } from '../../services/localizations.service';
 import { LocationMockExample } from '../../services/dtos/models/localizations';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 describe('CharacterPageComponent', () => {
   let component: CharacterPageComponent;
   let fixture: ComponentFixture<CharacterPageComponent>;
-  let charactersSubjectService: CharactersSubjectService
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -52,7 +50,7 @@ describe('CharacterPageComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of({
-              get: (name: string) => '1', // Mocking route paramMap
+              get: () => '1', // Mocking route paramMap
             }),
           },
         },
@@ -60,9 +58,7 @@ describe('CharacterPageComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(CharacterPageComponent);
-    router = TestBed.inject(Router);
     component = fixture.componentInstance;
-    charactersSubjectService = TestBed.inject(CharactersSubjectService)
     fixture.detectChanges();
   });
 
@@ -127,7 +123,7 @@ describe('CharacterPageComponent', () => {
   })
 
   it('countEps should return a number residents', () => {
-    const test = [1,2,3,4]
+    const test = ['1','2','3','4']
 
     const results = component.countEps(test)
 
