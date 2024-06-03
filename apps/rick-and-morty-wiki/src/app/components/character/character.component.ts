@@ -1,7 +1,7 @@
 import { Component, OnChanges, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ICharacter } from '../../services/dtos/models/characters';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-character',
@@ -17,10 +17,10 @@ export class CharacterComponent implements OnChanges {
   seeAll = input<boolean>(true);
   eventName = output<string>();
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(readonly router: Router) {}
 
   ngOnChanges(): void {
-    if (this.unity() != 0) {
+    if (this.unity() != 0 && this.caracters().length > 0) {
       this.caractersSlice = this.caracters().slice(0, this.unity());
     } else {
       this.caractersSlice = this.caracters();
@@ -40,7 +40,6 @@ export class CharacterComponent implements OnChanges {
 
   redirectLocalization(url: string) {
     const urlLocation = url.split('location/')[1]
-    console.log(urlLocation)
     this.router.navigate([`/localizations/${urlLocation}`]);
   }
 }
