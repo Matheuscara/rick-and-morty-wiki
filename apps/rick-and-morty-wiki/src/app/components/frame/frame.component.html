@@ -1,0 +1,9 @@
+<section
+  class="bg-gray-light w-fit flex flex-col items-center h-full py-4 px-5 justify-around rounded-simple gap-2 text-sm md:text-base"
+>
+  <ng-content select="#frame"> Location: </ng-content>
+  <h2>{{ title() }}</h2>
+  <a [href]="href()" class="text-white p-2 px-4 bg-blue-ocean rounded-3xl"
+    >Saiba mais -></a
+  >
+</section>

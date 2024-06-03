@@ -1,0 +1,57 @@
+<section class="bg-gray">
+  <div class="flex max-w-screen-xl mx-auto justify-center pt-5 flex-col px-4">
+    <div class="pb-5 items-end gap-4 block md:flex">
+      <h2 class="text-3xl font-semibold">Characters</h2>
+      <button
+        *ngIf="seeAll()"
+        (click)="redirectCharacters()"
+        class="text-blue-ocean"
+      >
+        See all ->
+      </button>
+    </div>
+    <div class="flex flex-wrap flex-row justify-center gap-4">
+      @for(caracter of caractersSlice; track caracters.name) {
+      <article
+        class="bg-gray-light flex flex-col text-white rounded-md font-extralight w-64"
+      >
+        <img
+          [src]="caracter.image"
+          [alt]="'character - ' + caracter.name"
+          class="rounded-top"
+        />
+        <div class="flex flex-col p-4">
+          <div>
+            <!-- TODO -  Add href 
+            -->
+            <a
+              class="font-semibold text-2xl hover:cursor-pointer truncate w-full block hover:text-blue-ocean"
+              (click)="redirectToCharacter(caracter.id)"
+              >{{ caracter.name }}</a
+            >
+            <p>{{ caracter.status }} - {{ caracter.species }}</p>
+          </div>
+
+          <div class="pt-5">
+            <p class="text-zinc-500">Last known location:</p>
+            <!-- TODO -  Add href
+             -->
+            <a
+              (click)="redirectLocalization(caracter.location.url)"
+              class="hover:text-blue-ocean hover:cursor-pointer"
+              >{{ caracter.location.name }}</a
+            >
+          </div>
+
+          <div class="pt-5">
+            <p class="text-zinc-500">First seen in:</p>
+            <!-- TODO -  Add href
+             -->
+            <a>Rixty Minutes</a>
+          </div>
+        </div>
+      </article>
+      }
+    </div>
+  </div>
+</section>
