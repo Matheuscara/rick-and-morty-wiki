@@ -19,6 +19,7 @@
         <img
           [src]="caracter.image"
           [alt]="'character - ' + caracter.name"
+          data-cy="card-image"
           class="rounded-top"
         />
         <div class="flex flex-col p-4">
@@ -28,12 +29,13 @@
             <a
               class="font-semibold text-2xl hover:cursor-pointer truncate w-full block hover:text-blue-ocean"
               (click)="redirectToCharacter(caracter.id)"
+              data-cy="card-title"
               >{{ caracter.name }}</a
             >
             <p>{{ caracter.status }} - {{ caracter.species }}</p>
           </div>
 
-          <div class="pt-5">
+          <div class="pt-5" data-cy="card-location">
             <p class="text-zinc-500">Last known location:</p>
             <!-- TODO -  Add href
              -->
