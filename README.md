@@ -29,7 +29,9 @@ O layout e a arquitetura são por sua conta, apenas atente-se aos requisitos pro
 - Imgur: 
     - Utilizado para o deploy das imagens necessárias. Imgur é uma plataforma confiável e fácil de usar para hospedar imagens, garantindo que as imagens estejam sempre disponíveis e acessíveis.
 - npx-infinite-scroll: 
-    - Utilizado para implementar o scroll infinito no projeto. NPX Infinite Scroll é uma solução prática para carregar dados de forma contínua à medida que o usuário rola a página, melhorando a experiência do usuário.
+    - Utilizado para implementar o scroll infinito no projeto. NPX Infinite Scroll é uma solução prática para carregar dados de forma contínua à medida que o usuário rola a página, melhorando a experiência do usuário
+- (CI/CD) com GitHub Actions:
+    - Para garantir a qualidade do código e a integração contínua, foi configurada uma pipeline de CI/CD utilizando GitHub Actions, onde fazemos as verificações de lint, testes unitarios, build para production e testes E2E.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
