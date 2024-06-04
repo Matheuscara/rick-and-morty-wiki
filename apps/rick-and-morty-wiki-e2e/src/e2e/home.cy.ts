@@ -24,4 +24,22 @@ describe('rick-and-morty-wiki-home', () => {
   it('should display 10 cards with locations', () => {
     cy.get('[data-cy="card-locations"]').should('have.length', 10);	
   })
+
+  it('should display in every card have image', () => {
+    cy.get('[data-cy="card-image"]').should('have.length', 8);	
+  })
+
+  it('should display in every card have title character', () => {
+    cy.get('[data-cy="card-title"]').should('have.length', 8);	
+  })
+
+  it('should display in every card have location', () => {
+    cy.get('[data-cy="card-location"]').should('have.length', 8);	
+  })
+
+  it('should redirect to character info when click by name', () => {
+    cy.get('[data-cy="card-title"]').first().click()
+    
+    cy.url().should('include', '/personagem/1')
+  })
 });
