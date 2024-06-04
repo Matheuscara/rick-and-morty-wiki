@@ -79,7 +79,7 @@ export class CharactersSubjectService implements StateCharacters {
         (response) => {
           this.charactersSelected$.update(() => response);
         },
-        (error) => {
+        () => {
           this.router.navigate(['/404']);
         }
       );

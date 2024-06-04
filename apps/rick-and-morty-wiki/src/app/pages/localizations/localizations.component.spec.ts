@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocalizationsPageComponent } from './localizations.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalizationsSubjectService } from '../../signalsStateServices/localizations.signals.service';
@@ -13,8 +13,6 @@ import { LocationMockExample } from '../../services/dtos/models/localizations';
 describe('LocalizationsPageComponent', () => {
   let component: LocalizationsPageComponent;
   let fixture: ComponentFixture<LocalizationsPageComponent>;
-  let localizationsSubjectService: LocalizationsSubjectService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -52,7 +50,7 @@ describe('LocalizationsPageComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of({
-              get: (name: string) => '1', // Mocking route paramMap
+              get: () => '1', // Mocking route paramMap
             }),
           },
         },
@@ -60,9 +58,7 @@ describe('LocalizationsPageComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(LocalizationsPageComponent);
-    router = TestBed.inject(Router);
     component = fixture.componentInstance;
-    localizationsSubjectService = TestBed.inject(LocalizationsSubjectService);
     fixture.detectChanges();
   });
 
@@ -127,7 +123,7 @@ describe('LocalizationsPageComponent', () => {
   })
 
   it('counResidents should return a number residents', () => {
-    const test = [1,2,3,4]
+    const test = ['', '', '', '']
 
     const results = component.counResidents(test)
 

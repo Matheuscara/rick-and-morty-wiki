@@ -13,6 +13,7 @@
     <div class="flex flex-wrap flex-row justify-center gap-4">
       @for(localization of localizationSlice; track localization.name) {
       <article
+        data-cy="card-locations"
         class="bg-gray-light gap-1 flex flex-col justify-center items-center text-white rounded-md font-extralight w-52 py-5 px-2"
       >
         <img

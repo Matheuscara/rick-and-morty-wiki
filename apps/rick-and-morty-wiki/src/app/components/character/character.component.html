@@ -13,6 +13,7 @@
     <div class="flex flex-wrap flex-row justify-center gap-4">
       @for(caracter of caractersSlice; track caracters.name) {
       <article
+        data-cy="card-character"
         class="bg-gray-light flex flex-col text-white rounded-md font-extralight w-64"
       >
         <img
